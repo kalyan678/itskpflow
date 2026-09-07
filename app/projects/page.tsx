@@ -1,23 +1,20 @@
 import projectsData from '@/data/projectsData'
 import Card from '@/components/Card'
+import PageHeader from '@/components/PageHeader'
 import { genPageMetadata } from 'app/seo'
 
-export const metadata = genPageMetadata({ title: 'Projects' })
+export const metadata = genPageMetadata({ title: 'Work' })
 
 export default function Projects() {
   return (
-    <>
-      <div className="divide-y divide-gray-200 dark:divide-gray-700">
-        <div className="space-y-2 pt-6 pb-8 md:space-y-5">
-          <h1 className="text-3xl leading-9 font-extrabold tracking-tight text-gray-900 sm:text-4xl sm:leading-10 md:text-6xl md:leading-14 dark:text-gray-100">
-            Projects
-          </h1>
-          <p className="text-lg leading-7 text-gray-500 dark:text-gray-400">
-            Selected projects and case studies are being documented.
-          </p>
-        </div>
-        <div className="container py-12">
-          <div className="-m-4 flex flex-wrap">
+    <div className="page-shell">
+      <PageHeader
+        title="Work"
+        description="Selected projects and case studies are being documented."
+      />
+      {projectsData.length > 0 && (
+        <div className="pt-10 sm:pt-14">
+          <div className="grid gap-6 md:grid-cols-2">
             {projectsData.map((d) => (
               <Card
                 key={d.title}
@@ -29,7 +26,7 @@ export default function Projects() {
             ))}
           </div>
         </div>
-      </div>
-    </>
+      )}
+    </div>
   )
 }

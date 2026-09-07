@@ -1,31 +1,36 @@
 import siteMetadata from '@/data/siteMetadata'
 import headerNavLinks from '@/data/headerNavLinks'
-import Logo from '@/data/logo.svg'
 import Link from './Link'
+import NavLink from './NavLink'
 import MobileNav from './MobileNav'
 import ThemeSwitch from './ThemeSwitch'
 import SearchButton from './SearchButton'
 
 const Header = () => {
-  let headerClass = 'flex items-center w-full bg-white dark:bg-gray-950 justify-between py-10'
+  let headerClass =
+    'site-header relative flex w-full items-center justify-between border-b border-gray-200/80 bg-white/95 py-5 dark:border-gray-800 dark:bg-gray-950/95'
   if (siteMetadata.stickyNav) {
     headerClass += ' sticky top-0 z-50'
   }
 
   return (
     <header className={headerClass}>
-      <div className="flex w-full items-center justify-end space-x-4 leading-5 sm:-mr-6 sm:space-x-6">
-        <div className="no-scrollbar hidden max-w-40 items-center gap-x-4 overflow-x-auto sm:flex md:max-w-72 lg:max-w-96">
+      <Link
+        href="/"
+        aria-label={`${siteMetadata.author} home`}
+        className="group flex shrink-0 items-center gap-3 rounded-sm text-gray-950 dark:text-white"
+      >
+        <span className="bg-primary-600 dark:bg-primary-400 h-2.5 w-2.5 rounded-full" />
+        <span className="text-base font-semibold tracking-[-0.02em]">
+          {siteMetadata.headerTitle}
+        </span>
+      </Link>
+      <div className="flex items-center gap-2 leading-5 sm:gap-3">
+        <nav className="hidden items-center gap-1 xl:flex" aria-label="Primary navigation">
           {headerNavLinks.map((link) => (
-            <Link
-              key={link.title}
-              href={link.href}
-              className="hover:text-primary-500 dark:hover:text-primary-400 m-1 font-medium text-gray-900 dark:text-gray-100"
-            >
-              {link.title}
-            </Link>
+            <NavLink key={link.title} href={link.href} title={link.title} primary={link.primary} />
           ))}
-        </div>
+        </nav>
         <SearchButton />
         <ThemeSwitch />
         <MobileNav />

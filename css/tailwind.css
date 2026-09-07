@@ -12,17 +12,17 @@
 
   /* Colors */
   /* Copied from https://tailwindcss.com/docs/theme#default-theme-variable-reference */
-  --color-primary-50: oklch(0.971 0.014 343.198);
-  --color-primary-100: oklch(0.948 0.028 342.258);
-  --color-primary-200: oklch(0.899 0.061 343.231);
-  --color-primary-300: oklch(0.823 0.12 346.018);
-  --color-primary-400: oklch(0.718 0.202 349.761);
-  --color-primary-500: oklch(0.656 0.241 354.308);
-  --color-primary-600: oklch(0.592 0.249 0.584);
-  --color-primary-700: oklch(0.525 0.223 3.958);
-  --color-primary-800: oklch(0.459 0.187 3.815);
-  --color-primary-900: oklch(0.408 0.153 2.432);
-  --color-primary-950: oklch(0.284 0.109 3.907);
+  --color-primary-50: oklch(0.984 0.014 180.72);
+  --color-primary-100: oklch(0.953 0.051 180.8);
+  --color-primary-200: oklch(0.91 0.096 180.43);
+  --color-primary-300: oklch(0.855 0.138 181.07);
+  --color-primary-400: oklch(0.777 0.152 181.91);
+  --color-primary-500: oklch(0.704 0.14 182.5);
+  --color-primary-600: oklch(0.6 0.118 184.7);
+  --color-primary-700: oklch(0.511 0.096 186.39);
+  --color-primary-800: oklch(0.437 0.078 188.22);
+  --color-primary-900: oklch(0.386 0.063 188.42);
+  --color-primary-950: oklch(0.277 0.046 192.52);
 
   --color-gray-50: oklch(0.985 0.002 247.839);
   --color-gray-100: oklch(0.967 0.003 264.542);
@@ -67,15 +67,72 @@
 
   a,
   button {
-    outline-color: var(--color-primary-500);
+    outline-color: var(--color-primary-700);
   }
 
   a:focus-visible,
   button:focus-visible {
     outline: 2px solid;
+    outline-offset: 3px;
     border-radius: var(--radius-sm);
-    outline-color: var(--color-primary-500);
+    outline-color: var(--color-primary-700);
   }
+
+  .dark a,
+  .dark button {
+    outline-color: var(--color-primary-300);
+  }
+
+  body {
+    font-size: 1rem;
+    line-height: 1.7;
+  }
+
+  ::selection {
+    background: var(--color-primary-200);
+    color: var(--color-gray-950);
+  }
+}
+
+@layer components {
+  .page-shell {
+    @apply py-14 sm:py-20 lg:py-24;
+  }
+
+  .page-header {
+    @apply max-w-3xl border-b border-gray-200 pb-10 sm:pb-14 dark:border-gray-800;
+  }
+
+  .eyebrow {
+    @apply text-primary-700 dark:text-primary-300 mb-4 text-sm font-semibold tracking-[0.16em] uppercase;
+  }
+
+  .display-title {
+    @apply text-4xl leading-[1.08] font-semibold tracking-[-0.045em] text-gray-950 sm:text-5xl lg:text-6xl dark:text-white;
+  }
+
+  .body-lead {
+    @apply mt-6 max-w-2xl text-lg leading-8 text-gray-600 sm:text-xl dark:text-gray-300;
+  }
+
+  .surface-card {
+    @apply rounded-2xl border border-gray-200 bg-white shadow-sm shadow-gray-950/5 dark:border-gray-800 dark:bg-gray-900 dark:shadow-black/20;
+  }
+
+  .text-link {
+    @apply text-primary-700 hover:text-primary-900 focus-visible:outline-primary-700 decoration-primary-300 dark:text-primary-300 dark:hover:text-primary-100 dark:focus-visible:outline-primary-300 font-semibold underline underline-offset-4 transition-colors;
+  }
+}
+
+.site-header::after {
+  position: absolute;
+  right: 0;
+  bottom: -1px;
+  left: 0;
+  height: 1px;
+  content: '';
+  background: linear-gradient(90deg, transparent, var(--color-primary-500), transparent);
+  opacity: 0.55;
 }
 
 @layer utilities {
