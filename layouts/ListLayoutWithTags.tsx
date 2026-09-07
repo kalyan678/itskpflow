@@ -82,14 +82,12 @@ export default function ListLayoutWithTags({
 
   return (
     <>
-      <div>
-        <div className="pt-6 pb-6">
-          <h1 className="text-3xl leading-9 font-extrabold tracking-tight text-gray-900 sm:hidden sm:text-4xl sm:leading-10 md:text-6xl md:leading-14 dark:text-gray-100">
-            {title}
-          </h1>
+      <div className="page-shell">
+        <div className="page-header sm:hidden">
+          <h1 className="display-title">{title}</h1>
         </div>
-        <div className="flex sm:space-x-24">
-          <div className="hidden h-full max-h-screen max-w-[280px] min-w-[280px] flex-wrap overflow-auto rounded-sm bg-gray-50 pt-5 shadow-md sm:flex dark:bg-gray-900/70 dark:shadow-gray-800/40">
+        <div className="flex gap-10 pt-10 sm:pt-14 lg:gap-16">
+          <aside className="surface-card hidden h-fit w-56 shrink-0 sm:block">
             <div className="px-6 py-4">
               {pathname.startsWith('/blog') ? (
                 <h3 className="text-primary-500 font-bold uppercase">All Posts</h3>
@@ -123,13 +121,13 @@ export default function ListLayoutWithTags({
                 })}
               </ul>
             </div>
-          </div>
-          <div>
-            <ul>
+          </aside>
+          <div className="min-w-0 flex-1">
+            <ul className="divide-y divide-gray-200 dark:divide-gray-800">
               {displayPosts.map((post) => {
                 const { path, date, title, summary, tags } = post
                 return (
-                  <li key={path} className="py-5">
+                  <li key={path} className="py-8 first:pt-0">
                     <article className="flex flex-col space-y-2 xl:space-y-0">
                       <dl>
                         <dt className="sr-only">Published on</dt>
@@ -141,8 +139,11 @@ export default function ListLayoutWithTags({
                       </dl>
                       <div className="space-y-3">
                         <div>
-                          <h2 className="text-2xl leading-8 font-bold tracking-tight">
-                            <Link href={`/${path}`} className="text-gray-900 dark:text-gray-100">
+                          <h2 className="text-2xl leading-8 font-semibold tracking-tight">
+                            <Link
+                              href={`/${path}`}
+                              className="hover:text-primary-700 dark:hover:text-primary-300 text-gray-950 transition-colors dark:text-white"
+                            >
                               {title}
                             </Link>
                           </h2>
@@ -150,7 +151,7 @@ export default function ListLayoutWithTags({
                             {tags?.map((tag) => <Tag key={tag} text={tag} />)}
                           </div>
                         </div>
-                        <div className="prose max-w-none text-gray-500 dark:text-gray-400">
+                        <div className="max-w-2xl leading-7 text-gray-600 dark:text-gray-300">
                           {summary}
                         </div>
                       </div>

@@ -1,20 +1,16 @@
-import { Authors, allAuthors } from 'contentlayer/generated'
-import { MDXLayoutRenderer } from 'pliny/mdx-components'
-import AuthorLayout from '@/layouts/AuthorLayout'
-import { coreContent } from 'pliny/utils/contentlayer'
+import PageHeader from '@/components/PageHeader'
 import { genPageMetadata } from 'app/seo'
 
-export const metadata = genPageMetadata({ title: 'About' })
+export const metadata = genPageMetadata({ title: 'Home' })
 
-export default function Page() {
-  const author = allAuthors.find((p) => p.slug === 'default') as Authors
-  const mainContent = coreContent(author)
-
+export default function HomePage() {
   return (
-    <>
-      <AuthorLayout content={mainContent}>
-        <MDXLayoutRenderer code={author.body.code} />
-      </AuthorLayout>
-    </>
+    <div className="page-shell">
+      <PageHeader
+        eyebrow="itskpflow"
+        title="Kalyan Prasad"
+        description="AI & Data Science Practice Leader"
+      />
+    </div>
   )
 }

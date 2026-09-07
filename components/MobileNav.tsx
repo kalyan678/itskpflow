@@ -1,9 +1,9 @@
 'use client'
 
-import { Dialog, DialogPanel, Transition, TransitionChild } from '@headlessui/react'
+import { Dialog, DialogPanel, DialogTitle, Transition, TransitionChild } from '@headlessui/react'
 import { disableBodyScroll, enableBodyScroll, clearAllBodyScrollLocks } from 'body-scroll-lock'
 import { Fragment, useState, useEffect, useRef } from 'react'
-import Link from './Link'
+import NavLink from './NavLink'
 import headerNavLinks from '@/data/headerNavLinks'
 
 const MobileNav = () => {
@@ -28,12 +28,16 @@ const MobileNav = () => {
 
   return (
     <>
-      <button aria-label="Toggle Menu" onClick={onToggleNav} className="sm:hidden">
+      <button
+        aria-label="Open navigation"
+        onClick={onToggleNav}
+        className="hover:border-primary-500 hover:text-primary-700 dark:hover:border-primary-400 dark:hover:text-primary-300 inline-flex h-10 w-10 items-center justify-center rounded-full border border-gray-200 text-gray-800 transition-colors xl:hidden dark:border-gray-700 dark:text-gray-100"
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 20 20"
           fill="currentColor"
-          className="hover:text-primary-500 dark:hover:text-primary-400 h-8 w-8 text-gray-900 dark:text-gray-100"
+          className="h-5 w-5"
         >
           <path
             fillRule="evenodd"
@@ -54,39 +58,43 @@ const MobileNav = () => {
             leaveTo="opacity-0"
             unmount={false}
           >
-            <div className="fixed inset-0 z-60 bg-black/25" />
+            <div className="fixed inset-0 z-60 bg-gray-950/40 backdrop-blur-sm" />
           </TransitionChild>
 
           <TransitionChild
             as={Fragment}
             enter="transition ease-in-out duration-300 transform"
-            enterFrom="translate-x-full opacity-0"
-            enterTo="translate-x-0 opacity-95"
+            enterFrom="translate-x-full"
+            enterTo="translate-x-0"
             leave="transition ease-in duration-200 transform"
             leaveFrom="translate-x-0 opacity-95"
-            leaveTo="translate-x-full opacity-0"
+            leaveTo="translate-x-full"
             unmount={false}
           >
-            <DialogPanel className="fixed top-0 left-0 z-70 h-full w-full bg-white/95 duration-300 dark:bg-gray-950/98">
+            <DialogPanel className="fixed top-0 right-0 z-70 h-full w-full max-w-sm border-l border-gray-200 bg-white px-6 shadow-2xl duration-300 dark:border-gray-800 dark:bg-gray-950">
+              <DialogTitle className="pt-7 text-sm font-semibold tracking-wide text-gray-500 uppercase dark:text-gray-400">
+                Navigation
+              </DialogTitle>
               <nav
                 ref={navRef}
-                className="mt-8 flex h-full basis-0 flex-col items-start overflow-y-auto pt-2 pl-12 text-left"
+                className="mt-10 flex flex-col items-stretch gap-2 overflow-y-auto text-left"
+                aria-label="Mobile navigation"
               >
                 {headerNavLinks.map((link) => (
-                  <Link
+                  <NavLink
                     key={link.title}
                     href={link.href}
-                    className="hover:text-primary-500 dark:hover:text-primary-400 mb-4 py-2 pr-4 text-2xl font-bold tracking-widest text-gray-900 outline outline-0 dark:text-gray-100"
+                    title={link.title}
+                    primary={link.primary}
+                    mobile
                     onClick={onToggleNav}
-                  >
-                    {link.title}
-                  </Link>
+                  />
                 ))}
               </nav>
 
               <button
-                className="hover:text-primary-500 dark:hover:text-primary-400 fixed top-7 right-4 z-80 h-16 w-16 p-4 text-gray-900 dark:text-gray-100"
-                aria-label="Toggle Menu"
+                className="hover:border-primary-500 hover:text-primary-700 dark:hover:border-primary-400 dark:hover:text-primary-300 absolute top-5 right-5 z-80 inline-flex h-10 w-10 items-center justify-center rounded-full border border-gray-200 text-gray-800 transition-colors dark:border-gray-700 dark:text-gray-100"
+                aria-label="Close navigation"
                 onClick={onToggleNav}
               >
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
