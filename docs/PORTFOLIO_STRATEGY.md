@@ -49,6 +49,15 @@ Do not add giant AI robots/brains, Matrix effects, animated typing headlines, sk
 ## Implementation rule
 The master strategy gives direction. Each Codex task defines the actual scope. Do not implement future phases unless explicitly asked.
 
+## Stage 3.1 design principles
+
+- Cards are functional containers, not the default hierarchy mechanism.
+- Numbers identify structured conceptual sets, not arbitrary sections.
+- Interactive content should expose a visible interaction cue.
+- Home positions; About explains.
+- Avoid double-dash and em-dash sentence separators in human-facing portfolio prose.
+- Favor consistency in structure and variation in storytelling.
+
 ## Stage 1
 Foundation cleanup only:
 - remove starter/template residue

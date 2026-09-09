@@ -66,14 +66,17 @@ export default function HomePage() {
                 {signal.label}
               </p>
               {signal.href ? (
-                <a
-                  href={signal.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-primary-700 dark:hover:text-primary-300 mt-1.5 inline-block text-base leading-6 font-semibold text-gray-800 transition-colors dark:text-gray-200"
-                >
-                  {signal.text}
-                </a>
+                <div className="mt-1.5">
+                  <p className="text-base leading-6 font-semibold text-gray-800 dark:text-gray-200">
+                    {signal.text}
+                  </p>
+                  <Link
+                    href={signal.href}
+                    className="text-link mt-2 inline-flex min-h-11 items-center py-2 text-sm"
+                  >
+                    View official recognition <span aria-hidden="true">↗︎</span>
+                  </Link>
+                </div>
               ) : (
                 <p className="mt-1.5 text-base leading-6 font-semibold text-gray-800 dark:text-gray-200">
                   {signal.text}
@@ -95,25 +98,31 @@ export default function HomePage() {
               What I Do
             </h2>
             <p className="mt-5 max-w-xl text-lg leading-8 text-gray-600 dark:text-gray-300">
-              I work across the technical, strategic and leadership dimensions of AI—turning ideas
+              I work across the technical, strategic and leadership dimensions of AI, turning ideas
               into practical systems, capabilities and outcomes.
             </p>
           </div>
-          <div className="grid gap-4 sm:grid-cols-2">
-            {capabilities.map((capability) => (
-              <article
+          <ol className="grid border-t border-gray-200 sm:grid-cols-2 dark:border-gray-800">
+            {capabilities.map((capability, index) => (
+              <li
                 key={capability.title}
-                className="surface-card rounded-xl p-5 shadow-none sm:p-6"
+                className="border-b border-gray-200 py-6 sm:odd:pr-6 sm:even:border-l sm:even:pl-6 dark:border-gray-800"
               >
-                <h3 className="text-xl font-semibold tracking-tight text-gray-950 dark:text-white">
+                <span
+                  className="text-primary-700 dark:text-primary-300 text-sm font-semibold tabular-nums"
+                  aria-hidden="true"
+                >
+                  {String(index + 1).padStart(2, '0')}
+                </span>
+                <h3 className="mt-3 text-xl font-semibold tracking-tight text-gray-950 dark:text-white">
                   {capability.title}
                 </h3>
-                <p className="mt-3 leading-7 text-gray-600 dark:text-gray-300">
+                <p className="mt-2 leading-7 text-gray-600 dark:text-gray-300">
                   {capability.description}
                 </p>
-              </article>
+              </li>
             ))}
-          </div>
+          </ol>
         </div>
       </section>
 
@@ -150,7 +159,10 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section aria-labelledby="perspectives-heading" className="py-16 sm:py-20 lg:py-24">
+      <section
+        aria-labelledby="perspectives-heading"
+        className="pt-16 pb-12 sm:pt-20 sm:pb-16 lg:pt-24 lg:pb-20"
+      >
         <div className="mb-8 max-w-2xl">
           <p className="eyebrow">Beyond the practice</p>
           <h2
