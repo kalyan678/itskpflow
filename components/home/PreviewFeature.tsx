@@ -25,8 +25,8 @@ export default function PreviewFeature({
   imagePosition = 'object-center',
 }: PreviewFeatureProps) {
   return (
-    <article className="surface-card overflow-hidden">
-      <div className="aspect-video overflow-hidden bg-gray-100 dark:bg-gray-900">
+    <article>
+      <div className="aspect-video overflow-hidden rounded-2xl bg-gray-100 dark:bg-gray-900">
         <Image
           src={imageSrc}
           alt={imageAlt}
@@ -36,7 +36,7 @@ export default function PreviewFeature({
           className={`h-full w-full object-cover ${imagePosition}`}
         />
       </div>
-      <div className="p-5 sm:p-6">
+      <div className="pt-5">
         <h3 className="text-2xl font-semibold tracking-tight text-gray-950 dark:text-white">
           {title}
         </h3>

@@ -17,7 +17,7 @@ export default function HomeHero() {
           </h1>
           <p className="mt-7 max-w-2xl text-lg leading-8 text-gray-600 sm:text-xl dark:text-gray-300">
             I work across enterprise AI, agentic systems, AI transformation, and the Python
-            ecosystem — combining technology, leadership, and community building.
+            ecosystem, combining technology, leadership, and community building.
           </p>
           <div className="mt-9 flex flex-wrap gap-4">
             <Link
