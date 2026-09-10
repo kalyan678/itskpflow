@@ -58,6 +58,13 @@ The master strategy gives direction. Each Codex task defines the actual scope. D
 - Avoid double-dash and em-dash sentence separators in human-facing portfolio prose.
 - Favor consistency in structure and variation in storytelling.
 
+## Stage 5 community principles
+
+- Community demonstrates sustained contribution rather than listing credentials.
+- Evidence should support the story without turning the page into a résumé.
+- Real photography should demonstrate community participation, not decorate empty space.
+- Missing evidence or photography should be deferred rather than replaced with placeholders.
+
 ## Stage 1
 Foundation cleanup only:
 - remove starter/template residue
