@@ -36,7 +36,9 @@ export default async function Page(props: { params: Promise<{ page: string }> })
       posts={posts}
       initialDisplayPosts={initialDisplayPosts}
       pagination={pagination}
-      title="All Posts"
+      title="Writing about technology, community and the lessons that come from both."
+      description="Notes on Python, data science, AI, open source, mentoring and the experiences that shape how I build, lead and contribute."
+      showTagNavigation={false}
     />
   )
 }

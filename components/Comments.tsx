@@ -11,12 +11,29 @@ export default function Comments({ slug }: { slug: string }) {
     return null
   }
   return (
-    <>
+    <section aria-labelledby="discussion-heading" className="mx-auto max-w-2xl text-left">
+      <h2
+        id="discussion-heading"
+        className="text-2xl font-semibold tracking-tight text-gray-950 dark:text-white"
+      >
+        Discussion
+      </h2>
+      <p className="mt-2 leading-7 text-gray-600 dark:text-gray-300">
+        Join the conversation through GitHub Discussions.
+      </p>
       {loadComments ? (
-        <CommentsComponent commentsConfig={siteMetadata.comments} slug={slug} />
+        <div className="mt-6">
+          <CommentsComponent commentsConfig={siteMetadata.comments} slug={slug} />
+        </div>
       ) : (
-        <button onClick={() => setLoadComments(true)}>Load Comments</button>
+        <button
+          type="button"
+          onClick={() => setLoadComments(true)}
+          className="text-link mt-3 inline-flex min-h-11 items-center py-2"
+        >
+          Load discussion
+        </button>
       )}
-    </>
+    </section>
   )
 }
