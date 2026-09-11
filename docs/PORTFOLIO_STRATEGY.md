@@ -65,6 +65,13 @@ The master strategy gives direction. Each Codex task defines the actual scope. D
 - Real photography should demonstrate community participation, not decorate empty space.
 - Missing evidence or photography should be deferred rather than replaced with placeholders.
 
+## Stage 6 work principles
+
+- Stage 6 implements Work through concise project previews rather than README duplication.
+- Real project visuals provide immediate evidence of working systems.
+- Live demos provide interactive evidence; GitHub carries the technical depth.
+- Missing future projects should not create placeholders.
+
 ## Stage 1
 Foundation cleanup only:
 - remove starter/template residue
