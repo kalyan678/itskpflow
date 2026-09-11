@@ -22,7 +22,9 @@ export default async function BlogPage(props: { searchParams: Promise<{ page: st
       posts={posts}
       initialDisplayPosts={initialDisplayPosts}
       pagination={pagination}
-      title="Writing"
+      title="Writing about technology, community and the lessons that come from both."
+      description="Notes on Python, data science, AI, open source, mentoring and the experiences that shape how I build, lead and contribute."
+      showTagNavigation={false}
     />
   )
 }
